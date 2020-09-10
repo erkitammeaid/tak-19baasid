@@ -1,6 +1,11 @@
 <?php
 
-require_once '../config.php';
+//require_once '../config.php';
+$host = 'd83309.mysql.zonevs.eu';
+$db   = 'd83309_books';
+$user = 'd83309sa327405';
+$charset = 'utf8mb4';
+//$pass = '';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 $options = [
@@ -17,7 +22,7 @@ $stmt = $pdo->prepare('SELECT * FROM books');
 $stmt->execute();
 $aBooks = $stmt->fetchAll();
 
-var_dump($aBooks);
+//var_dump($aBooks);
 
 ?>
 <!DOCTYPE html>
@@ -28,11 +33,12 @@ var_dump($aBooks);
     <title>Document</title>
 </head>
 <body>
-    <u1>
+    <ul>
         <?php
-            foreach ($aBooks as $book) {
-                echo '<li>' . $book ['title'];
+        foreach ($aBooks as $book) {
+            echo '<li>' .  '<a href = "book.php">' . $book['title'] . '</a>'. '</li>';
             }
-            ?>
+        ?>
+    </ul>
 </body>
 </html>
